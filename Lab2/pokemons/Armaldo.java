@@ -1,10 +1,13 @@
+import ru.ifmo.se.pokemon.*;
+
 class Armaldo extends Anorith {
 
-    protected Armaldo(String name, int level) {
+    Armaldo(String name, int level) {
 
         super(name, level);
-        setStats(75.0, 125.0, 100.0, 70.0, 80.0, 45.0);
+        setStats(75, 125, 100, 70, 80, 45);
         addMove(new BrutalSwing());
 
     }
+
 }
