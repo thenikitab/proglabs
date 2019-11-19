@@ -1,33 +1,55 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Status;
+import ru.ifmo.se.pokemon.Stat;
 
 class Facade extends PhysicalMove {
 
-    protected Facade() {
-        super(Type.NORMAL, 70.0, 100.0);
-    }
+    Facade() {
 
-    public void applyOppDamage(Pokemon p, double d) {
+        super(Type.NORMAL, 70, 100);
 
-        double damage = d;
-
-        if (p.getCondition() == Status.POISON ||
-                p.getCondition() == Status.BURN ||
-                p.getCondition() == Status.PARALYZE)
-            damage *= 2;
-        super.applyOppDamage(p, damage);
     }
 
     @Override
-    protected void applySelfEffects(Pokemon p) {
-        double newAttack = p.getStat(Stat.ATTACK);
+    protected void applyOppDamage(Pokemon pokemon, double v) {
 
-        if (p.getCondition() == Status.BURN)
+        double damage = v;
+
+        if (pokemon.getCondition() == Status.BURN ||
+                pokemon.getCondition() == Status.POISON ||
+                pokemon.getCondition() == Status.PARALYZE) {
+
+            damage = damage * 2;
+
+        }
+
+        super.applyOppDamage(pokemon, damage);
+
+    }
+
+    @Override
+    protected void applySelfEffects(Pokemon pokemon) {
+
+        double newAttack = pokemon.getStat(Stat.ATTACK);
+
+        if (pokemon.getCondition() == Status.BURN) {
+
             newAttack = newAttack / 2;
 
-        p.setStats(p.getHP(), newAttack, p.getStat(Stat.DEFENSE), p.getStat(Stat.SPECIAL_ATTACK),
-                p.getStat(Stat.SPECIAL_DEFENSE), p.getStat(Stat.SPEED));
+        }
+
+        pokemon.setStats(pokemon.getHP(), newAttack, pokemon.getStat(Stat.DEFENSE), pokemon.getStat(Stat.SPECIAL_ATTACK),
+                pokemon.getStat(Stat.SPECIAL_DEFENSE), pokemon.getStat(Stat.SPEED));
+
     }
-    protected String describe() {
+
+    @Override
+    public String describe() {
+
         return "применяет Facade";
+
     }
+
 }

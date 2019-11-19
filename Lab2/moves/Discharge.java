@@ -1,11 +1,29 @@
-import ru.ifmo.se.pokemon.*;
-class Discharge extends SpecialMove{
-    protected Discharge() {
-        super(Type.ELECTRIC, 80.0, 100.0);
+import ru.ifmo.se.pokemon.SpecialMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Status;
+
+class Discharge extends SpecialMove {
+
+    Discharge() {
+
+        super(Type.ELECTRIC, 80, 100);
+
     }
-    public void applyOppEffects(Pokemon p) {
-        p.addEffect(new Effect() .chance(0.3) .turns(-1) .condition(Status.PARALYZE) );
-    }
+
     @Override
-    protected String describe() {return "применяет Discharge" ;}
+    protected void applyOppEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().chance(0.3).turns(2).attack(0).condition(Status.PARALYZE));
+
+    }
+
+    @Override
+    public String describe() {
+
+        return "использует Discharge";
+
+    }
+
 }

@@ -1,17 +1,29 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Stat;
 
 class RockTomb extends PhysicalMove {
 
-    protected RockTomb() {
-        super(Type.ROCK, 60.0, 95.0);
-    }
+    RockTomb() {
 
-    public void applyOppEffects(Pokemon p) {
-        p.addEffect(new Effect() .turns(-1) .stat(Stat.SPEED, -1));
+        super(Type.ROCK, 60,95);
+
     }
 
     @Override
-    protected String describe() {
-        return "применяет Rock Tomb";
+    protected void applyOppEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().stat(Stat.SPEED, -1));
+
     }
+
+    @Override
+    public String describe() {
+
+        return "применяет Rock Tomb";
+
+    }
+
 }

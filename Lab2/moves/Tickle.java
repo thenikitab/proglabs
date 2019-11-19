@@ -1,18 +1,29 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.StatusMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Stat;
 
 class Tickle extends StatusMove {
 
-    protected Tickle() {
-        super(Type.NORMAL, 0.0, 100.0);
-    }
+    Tickle() {
 
-    public void applyOppEffects(Pokemon p) {
-        p.addEffect(new Effect() .turns(-1) .stat(Stat.DEFENSE, -1) .stat(Stat.ATTACK, -1));
+        super(Type.NORMAL, 0, 100);
+
     }
 
     @Override
-    protected String describe() {
+    protected void applyOppEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().stat(Stat.ATTACK, -1).stat(Stat.DEFENSE, -1));
+
+    }
+
+    @Override
+    public String describe() {
+
         return "применяет Tickle";
+
     }
 
 }

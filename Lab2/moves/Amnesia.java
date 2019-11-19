@@ -1,18 +1,29 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.StatusMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Stat;
 
 class Amnesia extends StatusMove {
 
-    protected Amnesia() {
-        super(Type.PSYCHIC, 0.0, 0.0);
-    }
+    Amnesia() {
 
-    public void applySelfEffects(Pokemon p) {
-        p.addEffect(new Effect() .turns(-1) .stat(Stat.SPECIAL_DEFENSE, 2));
+        super(Type.PSYCHIC, 0, 0);
+
     }
 
     @Override
-    protected String describe() {
+    protected void applySelfEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().stat(Stat.SPECIAL_DEFENSE, 2));
+
+    }
+
+    @Override
+    public String describe() {
+
         return "применяет Amnesia";
+
     }
 
 }

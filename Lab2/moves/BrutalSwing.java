@@ -1,13 +1,19 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
 
 class BrutalSwing extends PhysicalMove {
 
-    protected BrutalSwing() {
-        super(Type.DARK, 60.0, 100.0);
+    BrutalSwing() {
+
+        super(Type.DARK, 60, 100);
+
     }
 
     @Override
-    protected String describe() {
+    public String describe() {
+
         return "применяет Brutal Swing";
+
     }
+
 }

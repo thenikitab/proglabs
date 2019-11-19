@@ -1,13 +1,19 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
 
 class XScissor extends PhysicalMove {
 
-    protected XScissor() {
-        super(Type.BUG, 80.0, 100.0);
+    XScissor() {
+
+        super(Type.BUG, 80, 100);
+
     }
 
     @Override
-    protected String describe() {
+    public String describe() {
+
         return "применяет X-Scissor";
+
     }
+
 }

@@ -1,12 +1,19 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
 
 class ViceGrip extends PhysicalMove {
 
     ViceGrip() {
-        super(Type.NORMAL, 55.0, 100.0);
+
+        super(Type.NORMAL, 55, 100);
+
     }
 
     @Override
-    protected String describe() {return "применяет Vice Grip" ;}
+    public String describe() {
+
+        return "применяет ViceGrip";
+
+    }
 
 }

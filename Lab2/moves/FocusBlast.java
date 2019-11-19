@@ -1,18 +1,29 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.SpecialMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Stat;
 
 class FocusBlast extends SpecialMove {
 
-    protected FocusBlast() {
-        super(Type.FIGHTING, 120.0, 70.0);
-    }
+    FocusBlast() {
 
-    public void applyOppEffects(Pokemon p) {
-        p.addEffect(new Effect() .chance(0.1) .turns(-1) .stat(Stat.SPECIAL_DEFENSE, -1));
+        super(Type.FIGHTING, 120, 70);
+
     }
 
     @Override
-    protected String describe() {
+    protected void applyOppEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().chance(0.1).stat(Stat.SPECIAL_DEFENSE, -1));
+
+    }
+
+    @Override
+    public String describe() {
+
         return "применяет Focus Blast";
+
     }
 
 }

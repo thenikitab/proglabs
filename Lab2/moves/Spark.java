@@ -1,18 +1,29 @@
-import ru.ifmo.se.pokemon.*;
+import ru.ifmo.se.pokemon.PhysicalMove;
+import ru.ifmo.se.pokemon.Type;
+import ru.ifmo.se.pokemon.Pokemon;
+import ru.ifmo.se.pokemon.Effect;
+import ru.ifmo.se.pokemon.Status;
 
 class Spark extends PhysicalMove {
 
-    protected Spark() {
-        super(Type.ELECTRIC, 65.0, 100.0);
-    }
+    Spark() {
 
-    public void applyOppEffects(Pokemon p) {
-        p.addEffect(new Effect() .chance(0.3) .turns(-1) .condition(Status.PARALYZE) );
+        super(Type.ELECTRIC, 65, 100);
+
     }
 
     @Override
-    protected String describe() {
-        return "применяет Spark" ;
+    protected void applyOppEffects(Pokemon pokemon) {
+
+        pokemon.addEffect(new Effect().chance(0.3).turns(2).attack(0).condition(Status.PARALYZE));
+
+    }
+
+    @Override
+    public String describe() {
+
+        return "применяет Spark";
+
     }
 
 }
